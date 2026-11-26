@@ -8,6 +8,7 @@ public class Main extends GameApp {
     private Moon[] moons = new Moon[3];
     private int points;
     private double timeLeft = 60;
+    private double breadTimer = 0;
     
     @Override public void settings() {
         padding(20);
@@ -23,6 +24,7 @@ public class Main extends GameApp {
 
     @Override public void update(double seconds) {
         timeLeft -= seconds;
+        breadTimer -= seconds;
         int horizontal = 0;
         int vertical = 0;
         if (keyDown(Key.LEFT)) horizontal--;
@@ -34,6 +36,7 @@ public class Main extends GameApp {
             if (!moons[i].isCollected() && moons[i].touches(player)) {
                 moons[i].collect();
                 points++;
+                breadTimer = 2;
             }
         }
         if(timeLeft <= 0)
@@ -54,6 +57,10 @@ public class Main extends GameApp {
             moons[i].draw(this);
         }
         player.draw(this);
+        if(breadTimer > 0)
+        {
+            text("Bread!", 20, 90);
+        }
     }
 
 

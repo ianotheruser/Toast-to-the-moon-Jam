@@ -17,7 +17,7 @@ public class Moon {
 
     public void draw(GameApp app) {
         if (collected) return;
-        app.fill(Color.WHITE);
+        app.fill(Color.rgb(200, 195, 191));
         app.rect(x, y, size, size);
     }
 }
