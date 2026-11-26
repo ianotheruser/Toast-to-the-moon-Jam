@@ -7,6 +7,7 @@ public class Main extends GameApp {
     private Player player;
     private Moon[] moons = new Moon[3];
     private int points;
+    private double timeLeft = 60;
     
     @Override public void settings() {
         padding(20);
@@ -21,6 +22,7 @@ public class Main extends GameApp {
     }
 
     @Override public void update(double seconds) {
+        timeLeft -= seconds;
         int horizontal = 0;
         int vertical = 0;
         if (keyDown(Key.LEFT)) horizontal--;
@@ -33,6 +35,11 @@ public class Main extends GameApp {
                 moons[i].collect();
                 points++;
             }
+        }
+        if(timeLeft <= 0)
+        {
+            timeLeft = 0;
+            return;
         }
 
     }
