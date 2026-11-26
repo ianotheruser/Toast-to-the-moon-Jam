@@ -5,9 +5,8 @@ import zero.Key;
 
 public class Main extends GameApp {
     private Player player;
-    private Moon[] moons = new Moon[3];
+    private Moon[] moons = new Moon[5];
     private int points;
-    private double timeLeft = 60;
     private double breadTimer = 0;
     
     @Override public void settings() {
@@ -20,10 +19,11 @@ public class Main extends GameApp {
         moons[0] = new Moon(220,180);
         moons[1] = new Moon(340,200);
         moons[2] = new Moon(50,300);
+        moons[3] = new Moon(270,120);
+        moons[4] = new Moon(70,160);
     }
 
     @Override public void update(double seconds) {
-        timeLeft -= seconds;
         breadTimer -= seconds;
         int horizontal = 0;
         int vertical = 0;
@@ -39,12 +39,6 @@ public class Main extends GameApp {
                 breadTimer = 2;
             }
         }
-        if(timeLeft <= 0)
-        {
-            timeLeft = 0;
-            return;
-        }
-
     }
 
     @Override public void draw() {
